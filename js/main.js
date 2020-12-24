@@ -9,10 +9,6 @@ board.appendChild(square2);
 board.appendChild(square3);
 board.appendChild(square4);
 board.appendChild(square5);
-//tworzenie elementow
-//tworzenie elementow
-//tworzenie elementow
-//tworzenie elementow
 const btnStartEasy = document.querySelector('.btn-easy');
 const btnStartMedium = document.querySelector('.btn-medium');
 const btnStartHard = document.querySelector('.btn-hard');
@@ -24,13 +20,11 @@ labelSpanResult.style.opacity = '0';
 const squares = [square1, square2, square3, square4, square5];
 const buttons = [btnStartEasy, btnStartMedium, btnStartHard];
 const randPosition = (className) => {
-
     let xPosition;
     let yPosition;
     newInnerHeight = innerHeight * 0.9;
     newInnerWidth = innerWidth * 0.9;
     squares.forEach((element, i) => {
-        //element.style.backgroundImage = `url('/img/${img}.png')`;
         element.classList.add(`${className}`);
         element.style.display = 'block';
         squares[i].classList.add(`circle-div`);
@@ -71,7 +65,7 @@ const summaryClear = () =>{
     resultSpan.textContent = ``;
     labelSpanResult.style.opacity = '0';
 }
-const changePosistion = function(event){
+const changePosistion = function(){
     clickCounter++;
     let xPosition = Math.floor(Math.random() * (innerWidth * 0.8));
     let yPosition = Math.floor(Math.random() * (innerHeight * 0.8) - 100);
@@ -81,42 +75,40 @@ const changePosistion = function(event){
     (yPosition > newInnerHeight) ? yPosition -= 300: yPosition = yPosition;
     this.style.top = `${yPosition}px`;
     this.style.left = `${xPosition}px`;
+    this.style.display = 'block';
 }
-const easyModeStartGame = (e) => {
-    changeInfoDisable()
-    randPosition("circle-easy")
+const timeOut = (time) =>{
     setTimeout(() => squares.forEach(element => {
         element.style.display = 'none';
         changeInfoEnable()
         labelSpanResult.style.opacity = '1';
         resultSpan.textContent = clickCounter;
-    }), 30000);
+    }), time);
+}
+const easyModeStartGame = (e) => {
+    changeInfoDisable()
+    randPosition("circle-easy")
+    timeOut(30000)
     summaryClear()
 }
 const mediumModeStartGame = (e) => {
     changeInfoDisable()
     randPosition("circle-medium")
-    setTimeout(() => squares.forEach(element => {
-        element.style.display = 'none';
-        changeInfoEnable()
-        labelSpanResult.style.opacity = '1';
-        resultSpan.textContent = clickCounter;
-    }), 20000);
+    timeOut(20000)
     summaryClear()
 }
 const hardModeStartGame = (e) => {
     changeInfoDisable()
     randPosition("circle-hard")
-    setTimeout(() => squares.forEach(element => {
-        element.style.display = 'none';
-        changeInfoEnable()
-        labelSpanResult.style.opacity = '1';
-        resultSpan.textContent = clickCounter;
-    }), 10000);
+    timeOut(10000)
     summaryClear()
 }
+
 btnStartEasy.addEventListener('click', easyModeStartGame)
 btnStartMedium.addEventListener('click', mediumModeStartGame)
 btnStartHard.addEventListener('click', hardModeStartGame)
+squares.forEach(square => square.addEventListener('mousedown', ()=>{
+    square.style.display = 'none';
+}));
 squares.forEach(square => square.addEventListener('mousedown', changePosistion));
 
