@@ -6,7 +6,9 @@
     box-sizing: border-box;
     outline: none;
 }
-
+* ::selection{
+    background: none;
+}
 body {
     margin: 0;
     padding: 0;
