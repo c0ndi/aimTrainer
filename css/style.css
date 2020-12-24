@@ -4,6 +4,7 @@
     /*font-family: 'JetBrains Mono', monospace;*/
     font-family: 'Fjalla One', sans-serif;
     box-sizing: border-box;
+    outline: none;
 }
 
 body {
