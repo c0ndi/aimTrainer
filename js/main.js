@@ -90,7 +90,7 @@ const easyModeStartGame = (e) => {
         changeInfoEnable()
         labelSpanResult.style.opacity = '1';
         resultSpan.textContent = clickCounter;
-    }), 50000);
+    }), 30000);
     summaryClear()
 }
 const mediumModeStartGame = (e) => {
@@ -101,7 +101,7 @@ const mediumModeStartGame = (e) => {
         changeInfoEnable()
         labelSpanResult.style.opacity = '1';
         resultSpan.textContent = clickCounter;
-    }), 40000);
+    }), 20000);
     summaryClear()
 }
 const hardModeStartGame = (e) => {
@@ -112,7 +112,7 @@ const hardModeStartGame = (e) => {
         changeInfoEnable()
         labelSpanResult.style.opacity = '1';
         resultSpan.textContent = clickCounter;
-    }), 30000);
+    }), 10000);
     summaryClear()
 }
 btnStartEasy.addEventListener('click', easyModeStartGame)
