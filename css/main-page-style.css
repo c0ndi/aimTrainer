@@ -5,7 +5,9 @@
     font-family: 'Fjalla One', sans-serif;
     box-sizing: border-box;
 }
-
+* ::selection{
+    background: none;
+}
 body {
     margin: 0;
     padding: 0;
