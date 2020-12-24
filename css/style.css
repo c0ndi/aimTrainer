@@ -112,15 +112,14 @@ body {
 .title {
     font-size: 3rem;
 }
-
 .result-span {
     display: inline-block;
+    width: 100%;
     background: #2c3e50;
     text-align: center;
     font-size: 1.5rem;
     color: #fff4f4;
     text-shadow: -2px 0px #ff405c;
-    padding-bottom: 10px;
 }
 
 .option-list {
