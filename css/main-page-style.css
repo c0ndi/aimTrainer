@@ -48,6 +48,7 @@ body {
     width: 30%;
     height: 50%;
     display: flex;
+    align-content: space-around;
     align-items: center;
     flex-direction: column;
 }
@@ -60,15 +61,12 @@ body {
 }
 
 #about-game-span {
-    
     text-shadow: -2px 0px #ff405c;
     color: #fff4f4;
     font-size: 1.5rem;
 }
 
 #rules-span {
-    display: inline-block;
-    padding: 50px 100px 50px 100px;
     font-size: 1.25rem;
     color: #fff4f4;
     text-shadow: none;
@@ -84,6 +82,7 @@ body {
     transition: background .5s;
     color: #fff4f4;
     font-size: 1.2rem;
+    margin-top: 30px;
 }
 
 #link-btn:hover {
@@ -106,4 +105,27 @@ a {
 a:link,a:visited,a:hover,a:active {
     color: #fff4f4;
 }
+@media only screen and (max-width: 500px)
+{
+    .info {
+        width: 80%;
+        height: 50%;
+        display: flex;
+        align-content: space-around;
+        align-items: center;
+        flex-direction: column; 
+        
+    }
+}
+@media only screen and (max-width: 900px)
+{
+    .info {
+        width: 80%;
+        height: 50%;
+        display: flex;
+        align-content: space-around;
+        align-items: center;
+        flex-direction: column;
 
+    }
+}
