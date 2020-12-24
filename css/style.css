@@ -24,6 +24,7 @@ body {
     height: 12vh;
     flex-direction: row;
     background: #2c3e50;
+    
 }
 
 #logo {
@@ -86,10 +87,6 @@ body {
     background-position: center;
 }
 
-.clicked {
-    width: 80px;
-    height: 80px;
-}
 
 .game {
     display: flex;
@@ -138,4 +135,17 @@ a {
 a:link,a:visited,a:hover,a:active {
     color: #fff4f4;
 }
-
+@media only screen and (max-width: 500px)
+{
+    .board {
+        width: 100%;
+        flex-direction: column;
+    }
+}
+@media only screen and (max-width: 900px)
+{
+   .board {
+        width: 100%;
+        flex-direction: column;
+    }
+}
