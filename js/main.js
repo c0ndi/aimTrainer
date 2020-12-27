@@ -19,6 +19,7 @@ let clickCounter = 0;
 labelSpanResult.style.opacity = '0';
 const squares = [square1, square2, square3, square4, square5];
 const buttons = [btnStartEasy, btnStartMedium, btnStartHard];
+
 const randPosition = (className) => {
     let xPosition;
     let yPosition;
