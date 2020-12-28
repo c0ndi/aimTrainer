@@ -42,7 +42,7 @@ def rejestracja():
         nick = form.nick.data
         password = form.password.data
 
-        if len(login) > 0 and len(nick) > 0 and len(password) > 0:
+        if len(login) > 0 and len(nick) > 0 and len(password) > 0 and login != '' and nick != '' and password != '':
             user = Users(login, nick, password)
             users = (Users.query.filter_by(login = login, nick = nick)).all()
             nick = str(user).split(',')[1]
@@ -53,9 +53,6 @@ def rejestracja():
                 db.session.commit()
             else:
                 return "<p>Niestety ale taki użytkownik już istnieje</p><a href=''/rejestracja'><button>Powrót</button></a>"
-        else:
-            '<p>Podaj wszystkie dane</p><a href="/rejestracja"><button>Powrót</button></a>'
-        return redirect(url_for('login'))
 
     return render_template('rejestracja.html', form = form, user = None)
 
@@ -104,5 +101,12 @@ def index():
         return redirect(url_for('login'))
     return render_template('index.html', user = session['nick'], form = logoutform, loginform = loginform)
 
+@app.errorhandler(404)
+
+# inbuilt function which takes error as parameter
+def not_found(e):
+
+# defining function
+  return render_template("404.html")
 if __name__ == '__main__':
     app.run(debug = True)
