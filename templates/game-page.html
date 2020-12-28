@@ -13,6 +13,11 @@
     <div class="game">
         <nav class="navbar">
             <a href="{{url_for('index')}}"><span class="title">aimTrainer</span></a>
+            {% if user != None%}
+              Zalogowano jako {{user}}
+              Twój największy wynik: {{maxscore}}
+
+            {%endif%}
         </nav>
         <div class="result-container">
             <span class="result-span">Zdobyłes! <span class="result"></span></span>

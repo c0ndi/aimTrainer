@@ -8,6 +8,7 @@
     <form method="POST">
       {{ form.hidden_tag() }}
       {{ form.login.label }} {{ form.login()}}
+      {{ form.nick.label }} {{ form.nick()}}
       {{ form.password.label }} {{ form.password()}}
       {{ form.submit() }}
     </form>
