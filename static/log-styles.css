@@ -1,0 +1,132 @@
+@import url('https://fonts.googleapis.com/css2?family=Bungee+Outline&family=Fjalla+One&display=swap');
+
+* {
+    font-family: 'Fjalla One', sans-serif;
+    box-sizing: border-box;
+    outline: none;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    background: #34495e;
+}
+
+.btn-start {
+    background: none;
+    border: 2px solid #fff4f4;
+    width: 250px;
+    height: 40px;
+    border-radius: 20px;
+    transition: color .5s;
+    transition: background .5s;
+    color: #fff4f4;
+    font-size: 1.2rem;
+    margin-left: 40%;
+}
+
+.btn-start:hover {
+    background: #fff4f4;
+    color: #34495e;
+}
+
+.form-box {
+    width: 100%;
+    height: 88vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+form {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    width: 40%;
+    height: 70%;
+}
+
+form * {
+    color: #fff4f4;
+}
+
+input {
+    margin-left: 40%;
+    margin-bottom: 20px;
+    width: 250px;
+    background: none;
+    font-size: 1.2rem;
+    height: 30px;
+    border: none;
+    border-bottom: 2px solid #ff405c;
+    transition: width .5s ease;
+}
+
+input:focus {
+    width: 320px;
+}
+
+.navbar {
+    width: 100%;
+    height: 12vh;
+    background: #2c3e50;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.title {
+    font-size: 3.5rem;
+    color: #fff4f4;
+    text-shadow: -3px 0px #ff405c;
+}
+
+.heading {
+    font-size: 2.5rem;
+    color: #fff4f4;
+    text-shadow: -3px 0px #ff405c;
+}
+
+.desc-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.desc-item {
+    margin-top: 40px;
+}
+
+.desc-photo {
+    width: 70%;
+}
+
+@media only screen and (max-width: 500px) {
+    .desc-photo {
+        display: none;
+    }
+    form {
+        width: 100%;
+        justify-content: center;
+        align-items: center;
+    }
+    .form-box {
+        flex-direction: column;
+    }
+    input, .btn-start{
+        margin-left: 0;
+    } 
+
+}
+
+@media only screen and (max-width: 900px) {
+    .desc-photo {
+        display: none;
+    }
+
+    .form-box {
+        flex-direction: column;
+    }
+}

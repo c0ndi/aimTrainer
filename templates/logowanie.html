@@ -1,15 +1,31 @@
 <!DOCTYPE html>
 <html lang="pl" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title></title>
-  </head>
-  <body>
+
+<head>
+  <meta charset="utf-8">
+  <title>Login</title>
+  <link rel="stylesheet" href="{{url_for('static', filename = 'log-styles.css')}}">
+</head>
+
+<body>
+  <nav class="navbar">
+    <span class="title">AimTrainer</span>
+  </nav>
+  <div class="form-box">
+    <div class="desc-box">
+      <span class="heading desc-item">Zaloguj sie!</span>
+      <img src="/img/target.svg" class="desc-photo desc-item">
+    </div>
     <form method="POST">
       {{ form.hidden_tag() }}
-      {{ form.login.label }} {{ form.login()}}
-      {{ form.password.label }} {{ form.password()}}
-      {{ form.submit() }}
+      {{ form.login.label }} {{ form.login(class="log-form login")}}
+      {{ form.password.label }} {{ form.password(class="log-form password")}}
+      {{ form.submit(class="log-form btn-start") }}
     </form>
-  </body>
+  </div>
+  <!-- <script src="valLogReg.js"></script> 
+      Nie wiem czy mozna dodawac skrypty normlanie ale jak cos dodamy w lini
+    -->
+</body>
+
 </html>

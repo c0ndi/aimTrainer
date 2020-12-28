@@ -1,0 +1,39 @@
+@import url('https://fonts.googleapis.com/css2?family=Bungee+Outline&family=Fjalla+One&display=swap');
+
+* {
+    font-family: 'Fjalla One', sans-serif;
+    box-sizing: border-box;
+    outline: none;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    background: #34495e;
+}
+.erors-box{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    height: 70vh;
+}
+.error-heading{
+    font-size: 15rem;
+    color: #fff4f4;
+    text-shadow: -3px 0px #ff405c;
+}
+.error::selection{
+    color: #34495e;
+    background: #fff4f4;
+}
+.error-desc{
+    color: #fff4f4;
+    display: inline-block;
+    width: 30%;
+    font-size: 1.25rem;
+}
+
+
