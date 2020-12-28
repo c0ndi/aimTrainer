@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="pl" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <form method="POST">
+      {{ form.hidden_tag() }}
+      {{ form.login.label }} {{ form.login()}}
+      {{ form.password.label }} {{ form.password()}}
+      {{ form.submit() }}
+    </form>
+  </body>
+</html>
