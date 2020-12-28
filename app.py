@@ -1,6 +1,6 @@
 import os
 from flask import Flask, render_template, redirect, url_for, session
-from loginform import LoginForm
+from forms import LoginForm, LogoutForm, GoToLoginForm
 from flask_sqlalchemy import SQLAlchemy
 
 basedir = os.path.abspath(os.path.dirname(__file__))
@@ -71,19 +71,30 @@ def login():
 
     return render_template('logowanie.html', form = form, user = None)
 
-@app.route('/game')
+
+@app.route('/game', methods = ["POST", "GET"])
 def game():
+    logoutform = LogoutForm()
+    loginform = GoToLoginForm()
     if len(session.keys()) < 2:
         return render_template('game-page.html', user = None)
-    return render_template('game-page.html', user = session['nick'])
+    if logoutform.validate_on_submit():
+        session['nick'] = ''
+        return redirect(url_for('game'))
+    elif loginform.validate_on_submit():
+        return redirect(url_for('login'))
+    return render_template('game-page.html', user = session['nick'], form = logoutform, loginform = loginform)
 
 
-@app.route('/')
-
+@app.route('/', methods = ["POST", "GET"])
 def index():
+    logoutform = LogoutForm()
+    loginform = GoToLoginForm()
     if len(session.keys()) < 2:
         return render_template('index.html', user = None)
-    return render_template('index.html', user = session['nick'])
+    if loginform.validate_on_submit():
+        return redirect(url_for('login'))
+    return render_template('index.html', user = session['nick'], form = logoutform, loginform = loginform)
 
 if __name__ == '__main__':
     app.run(debug = True)

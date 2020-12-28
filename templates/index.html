@@ -13,9 +13,13 @@
     <nav class="navbar">
         <img src="{{url_for('static', filename = 'img/target.svg')}}" id="logo">
         <span id="title">aimTrainer</span>
-        {% if user != None%}
+        {% if user != ''%}
           <p>Zalogowano jako {{user}}</p>
           Twój największy wynik: {{maxscore}}
+          <form method = "POST" >
+            {{ form.hidden_tag()}}
+            {{ form.submit() }}
+          </form>
 
         {%endif%}
     </nav>
