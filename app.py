@@ -42,12 +42,20 @@ def rejestracja():
         nick = form.nick.data
         password = form.password.data
 
-        if login != '' and password != '':
+        if len(login) > 0 and len(nick) > 0 and len(password) > 0:
             user = Users(login, nick, password)
-            db.session.add(user)
-            db.session.commit()
-
-        return redirect(url_for('game'))
+            users = (Users.query.filter_by(login = login, nick = nick)).all()
+            nick = str(user).split(',')[1]
+            login = (str(user).split(',')[0])[0:]
+            print(login)
+            if not users:
+                db.session.add(user)
+                db.session.commit()
+            else:
+                return "<p>Niestety ale taki użytkownik już istnieje</p><a href=''/rejestracja'><button>Powrót</button></a>"
+        else:
+            '<p>Podaj wszystkie dane</p><a href="/rejestracja"><button>Powrót</button></a>'
+        return redirect(url_for('login'))
 
     return render_template('rejestracja.html', form = form, user = None)
 
