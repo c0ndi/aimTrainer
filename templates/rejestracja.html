@@ -4,10 +4,11 @@
   <meta charset="utf-8">
   <title></title>
   <link rel="stylesheet" href="{{url_for('static', filename = 'logReg-styles.css')}}">
+  <link rel="icon" href="{{url_for('static', filename = 'img/lower.png')}}">
 </head>
 <body>
   <nav class="navbar">
-    <span class="title">AimTrainer</span>
+    <a href="{{url_for('game')}}"><span class="title">AimTrainer</span></a>
   </nav>
   <div class="form-box">
     <div class="desc-box">
@@ -19,9 +20,9 @@
       <!-- jest tutaj przy kazdym inpucie .label ale on nie bedzie potrzebny i musisz dodac placeholder jak cos -->
       <!-- jest tutaj przy kazdym inpucie .label ale on nie bedzie potrzebny i musisz dodac placeholder jak cos -->
       <!-- jest tutaj przy kazdym inpucie .label ale on nie bedzie potrzebny i musisz dodac placeholder jak cos -->
-      {{ form.login.label }} {{ form.login(class="log-form login form-member")}}
-      {{ form.nick.label }} {{ form.nick(class="log-form nick form-member")}}
-      {{ form.password.label }} {{ form.password(class="log-form password form-member")}}
+      {{ form.login(class="log-form login form-member", placeholder="Login")}}
+      {{ form.nick(class="log-form nick form-member", placeholder="Nick")}}
+      {{ form.password(class="log-form password form-member", placeholder="Password")}}
       {{ form.submit() }}
     </form>
   </div>

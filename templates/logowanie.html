@@ -7,21 +7,26 @@
 </head>
 <body>
   <nav class="navbar">
-    <span class="title">AimTrainer</span>
+    <a href="{{url_for('game')}}"><span class="title">AimTrainer</span></a>
   </nav>
   <div class="form-box">
     <div class="desc-box">
       <span class="heading desc-item">Zaloguj sie!</span>
+
       <img src="static/img/target.svg" class="desc-photo desc-item">
     </div>
     <form method="POST">
       {{ form.hidden_tag() }}
-      {{ form.login.label }} {{ form.login(class="log-form login form-member")}}
-      {{ form.password.label }} {{ form.password(class="log-form password form-member")}}
+      {{ form.login(class="log-form login form-member" , placeholder="Login")}}
+      {{ form.password(class="log-form password form-member", placeholder="Nick")}}
       {{ form.submit(class="log-form btn-start") }}
+      {%for flash in get_flashed_messages()%}
+        <p>{{flash}}</p>
+      {%endfor%}
     </form>
+
   </div>
-  <!-- <script src="static/js/valLog.js"></script> 
+  <!-- <script src="static/js/valLog.js"></script>
       Nie wiem czy mozna dodawac skrypty normlanie ale jak cos dodamy w lini
     -->
 </body>
@@ -30,7 +35,7 @@
 <!-- tutaj przy logowaniu tez dodaj placeholder bo  -->
 <!-- tutaj przy logowaniu tez dodaj placeholder bo  -->
 
-<!-- 
+<!--
 <form method="POST">
   <input placeholder="Login" type="text" name="login" class="log-form login form-member">
   <input placeholder="Nick" type="text" name="nick" class="log-form nick form-member">

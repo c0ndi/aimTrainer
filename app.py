@@ -1,5 +1,5 @@
 import os
-from flask import Flask, render_template, redirect, url_for, session
+from flask import Flask, render_template, redirect, url_for, session, flash
 from forms import LoginForm, LogoutForm, GoToLoginForm
 from flask_sqlalchemy import SQLAlchemy
 
@@ -47,12 +47,13 @@ def rejestracja():
             users = (Users.query.filter_by(login = login, nick = nick)).all()
             nick = str(user).split(',')[1]
             login = (str(user).split(',')[0])[0:]
-            print(login)
-            if not users:
+            if not nick and not login:
+                return "<p>Niestety ale taki użytkownik już istnieje</p><a href=''/rejestracja'><button>Powrót</button></a>"
+            else:
                 db.session.add(user)
                 db.session.commit()
-            else:
-                return "<p>Niestety ale taki użytkownik już istnieje</p><a href=''/rejestracja'><button>Powrót</button></a>"
+                return redirect(url_for('login'))
+
 
     return render_template('rejestracja.html', form = form, user = None)
 
@@ -67,7 +68,7 @@ def login():
         if login != '' and password != '':
             if not (Users.query.filter_by(login = login, password = password)).all():
                 #Nie ma takiego użytkownika
-                return '<p>Niestety nie udało się zalogować</p>'
+                flash('Błąd logowania')
             else:
                 #Jest taki użytkownik
                 user = (Users.query.filter_by(login = login, password = password)).all()
