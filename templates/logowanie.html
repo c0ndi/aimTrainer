@@ -1,12 +1,10 @@
 <!DOCTYPE html>
 <html lang="pl" dir="ltr">
-
 <head>
   <meta charset="utf-8">
   <title>Login</title>
-  <link rel="stylesheet" href="{{url_for('static', filename = 'log-styles.css')}}">
+  <link rel="stylesheet" href="{{url_for('static', filename = 'logReg-styles.css')}}">
 </head>
-
 <body>
   <nav class="navbar">
     <span class="title">AimTrainer</span>
@@ -14,18 +12,28 @@
   <div class="form-box">
     <div class="desc-box">
       <span class="heading desc-item">Zaloguj sie!</span>
-      <img src="/img/target.svg" class="desc-photo desc-item">
+      <img src="static/img/target.svg" class="desc-photo desc-item">
     </div>
     <form method="POST">
       {{ form.hidden_tag() }}
-      {{ form.login.label }} {{ form.login(class="log-form login")}}
-      {{ form.password.label }} {{ form.password(class="log-form password")}}
+      {{ form.login.label }} {{ form.login(class="log-form login form-member")}}
+      {{ form.password.label }} {{ form.password(class="log-form password form-member")}}
       {{ form.submit(class="log-form btn-start") }}
     </form>
   </div>
-  <!-- <script src="valLogReg.js"></script> 
+  <!-- <script src="static/js/valLog.js"></script> 
       Nie wiem czy mozna dodawac skrypty normlanie ale jak cos dodamy w lini
     -->
 </body>
-
 </html>
+<!-- tutaj przy logowaniu tez dodaj placeholder bo  -->
+<!-- tutaj przy logowaniu tez dodaj placeholder bo  -->
+<!-- tutaj przy logowaniu tez dodaj placeholder bo  -->
+
+<!-- 
+<form method="POST">
+  <input placeholder="Login" type="text" name="login" class="log-form login form-member">
+  <input placeholder="Nick" type="text" name="nick" class="log-form nick form-member">
+  <input type="password" placeholder="Haslo" name="password" class="log-form password form-member">
+  <button type="submit" class="log-form btn-start">Zaloguj</button>
+</form> -->

@@ -1,22 +1,44 @@
 <!DOCTYPE html>
 <html lang="pl" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title></title>
-    <link rel="stylesheet" href = "{{url_for('static', filename = 'register-styles.css')}}">
-  </head>
-  <body>
+<head>
+  <meta charset="utf-8">
+  <title></title>
+  <link rel="stylesheet" href="{{url_for('static', filename = 'logReg-styles.css')}}">
+</head>
+<body>
+  <nav class="navbar">
+    <span class="title">AimTrainer</span>
+  </nav>
+  <div class="form-box">
+    <div class="desc-box">
+      <span class="heading desc-item">Zarejestruj sie!</span>
+      <img src="static/img/target.svg" class="desc-photo desc-item">
+    </div>
     <form method="POST">
       {{ form.hidden_tag() }}
-      {{ form.login.label }} {{ form.login()}}
-      {{ form.nick.label }} {{ form.nick()}}
-      {{ form.password.label }} {{ form.password()}}
+      <!-- jest tutaj przy kazdym inpucie .label ale on nie bedzie potrzebny i musisz dodac placeholder jak cos -->
+      <!-- jest tutaj przy kazdym inpucie .label ale on nie bedzie potrzebny i musisz dodac placeholder jak cos -->
+      <!-- jest tutaj przy kazdym inpucie .label ale on nie bedzie potrzebny i musisz dodac placeholder jak cos -->
+      {{ form.login.label }} {{ form.login(class="log-form login form-member")}}
+      {{ form.nick.label }} {{ form.nick(class="log-form nick form-member">)}}
+      {{ form.password.label }} {{ form.password(class="log-form password form-member")}}
       {{ form.submit() }}
     </form>
-  </body>
+  </div>
+  <script src="static/js/valReg.js"></script>
+</body>
+
 </html>
 
-<!-- Przerobie jutro te style tez po rejestracfje jak cos -->
-<!-- Przerobie jutro te style tez po rejestracfje jak cos -->
-<!-- Przerobie jutro te style tez po rejestracfje jak cos -->
-<!-- Przerobie jutro te style tez po rejestracfje jak cos -->
+<!-- Tak jak tutaj na dole jest przy kazdym inpucie placeholder -->
+<!-- Tak jak tutaj na dole jest przy kazdym inpucie placeholder -->
+<!-- Tak jak tutaj na dole jest przy kazdym inpucie placeholder -->
+<!-- Tak jak tutaj na dole jest przy kazdym inpucie placeholder -->
+
+<!-- 
+<form method="POST">
+  <input placeholder="Login" type="text" name="login" class="log-form login form-member">
+  <input placeholder="Nick" type="text" name="nick" class="log-form nick form-member">
+  <input type="password" placeholder="Haslo" name="password" class="log-form password form-member">
+  <button type="submit" class="log-form btn-start">Zaloguj</button>
+</form>-->

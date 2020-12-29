@@ -12,24 +12,24 @@
 <body>
     <nav class="navbar">
         <img src="{{url_for('static', filename = 'img/target.svg')}}" id="logo">
-        <span id="title">aimTrainer</span>
+        <span class="title">aimTrainer</span>
       
     </nav>
     <section class="info-section ">
         <div class="info">
-            <span id="info-title-span">Witaj na aimTrainerze</span>
-            <span id="about-game-span">O grze:</span>
-            <span id="rules-span">
+            <span class="info-title-span">Witaj na aimTrainerze</span>
+            <span class="about-game-span">O grze:</span>
+            <span class="rules-span">
                 Klikajac przycisk ponizej przeniesie cie do strony z wyborem poziomu trudnosci, w grze chodzi o klikanie tarcz i trenowanie aima, po wybraniu poziomu trudnosci przez okreslona ilosc czasu pojawiac sie beda tarcze. </span>
-            <span style="text-shadow: -2px 0px #ff405c;  color: #fff4f4; font-size: 1.25rem; margin-top: auto;">GLHF</span>
-        </div><a href="{{url_for('game')}}" style="cursor: pointer;"><button id="link-btn" style="cursor: pointer;">Wejdz</button></a>
+            <span class="glHf-span">GLHF</span>
+        </div>
+        <a href="{{url_for('game')}}" class="btn-a-link"><button class="link-btn">Wejdz</button></a>
     </section>
     <footer class="footer-credits">
-        <ul style="list-style-type: none; display: flex; justify-content: space-around; align-items: center;
-        width: 100%;">
-            <li id="author-li" style="color:#fff4f4;">Autor: Konrad Kowalik</li>
-            <li id="link-li">GitHub:
-            <a href="https://github.com/c0ndi" style="font-style: italic;">c0ndi</a></li>
+        <ul class="footer-credits-list">
+            <li class="link-li">Autor: Konrad Kowalik</li>
+            <li class="link-li">GitHub:
+            <a href="https://github.com/c0ndi" class="github-link">c0ndi</a></li>
         </ul>
     </footer>
 </body>
