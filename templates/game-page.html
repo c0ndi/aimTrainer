@@ -4,23 +4,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AimTrainer</title>
-    <link rel="stylesheet" href = "{{url_for('static', filename = 'style.css')}}">
+    <link rel="stylesheet" href = "{{url_for('static', filename = 'game-page-style.css')}}">
 </head>
 <body>
     <div class="game">
         <nav class="navbar">
             <a href="{{url_for('index')}}"><span class="title">aimTrainer</span></a>
-            {% if user != ''%}
-              Zalogowano jako {{user}}
-              Twój największy wynik: {{maxscore}}
-              <form method = "POST" >
-                {{ form.hidden_tag()}}
-                {{ form.submit() }}
-              </form>
-            {%else%}
-            <a href="/logowanie"><button>Zaloguj</button></a>
-            <a href="/rejestracja"><button>Zarejestruj</button></a>
-            {%endif%}
+            <div class="">
+              {% if user != None and user != ''%}
+                Zalogowano jako {{user}}
+                Twój największy wynik: {{maxscore}}
+                <form method = "POST" >
+                  {{ form.hidden_tag()}}
+                  {{ form.submit() }}
+                </form>
+              {%else%}
+              <a href="/logowanie"><button>Zaloguj</button></a>
+              <a href="/rejestracja"><button>Zarejestruj</button></a>
+              {%endif%}
+            </div>
+
         </nav>
         <div class="result-container">
             <span class="result-span">Zdobyłes! <span class="result"></span></span>

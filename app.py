@@ -82,7 +82,7 @@ def game():
     logoutform = LogoutForm()
     loginform = GoToLoginForm()
     if len(session.keys()) < 2:
-        return render_template('game-page.html', user = None)
+        return render_template('game-page.html', user = None, form = logoutform, loginform = loginform)
     if logoutform.validate_on_submit():
         session['nick'] = ''
         return redirect(url_for('game'))
@@ -96,10 +96,10 @@ def index():
     logoutform = LogoutForm()
     loginform = GoToLoginForm()
     if len(session.keys()) < 2:
-        return render_template('index.html', user = None)
+        return render_template('main-page.html', user = None)
     if loginform.validate_on_submit():
         return redirect(url_for('login'))
-    return render_template('index.html', user = session['nick'], form = logoutform, loginform = loginform)
+    return render_template('main-page.html', user = session['nick'], form = logoutform, loginform = loginform)
 
 @app.errorhandler(404)
 
