@@ -18,7 +18,7 @@
     <form method="POST">
       {{ form.hidden_tag() }}
       {{ form.login(class="log-form login form-member" , placeholder="Login")}}
-      {{ form.password(class="log-form password form-member", placeholder="Nick")}}
+      {{ form.password(class="log-form password form-member", placeholder="Password")}}
       {{ form.submit(class="log-form btn-start") }}
       {%for flash in get_flashed_messages()%}
         <p>{{flash}}</p>

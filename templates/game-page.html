@@ -19,9 +19,11 @@
                   {{ form.hidden_tag()}}
                   {{ form.submit() }}
                 </form>
+                <a href="/userpage/{{login}}"><button>Profil</button></a>
               {%else%}
               <a href="/logowanie"><button>Zaloguj</button></a>
               <a href="/rejestracja"><button>Zarejestruj</button></a>
+
               {%endif%}
             </div>
 

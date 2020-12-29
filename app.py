@@ -33,6 +33,19 @@ class Users(db.Model):
 
 db.create_all()
 
+@app.route('/adminpanel')
+def admin():
+    if 'login' in session:
+        if session['login'] == 'Admin':
+            return 'Witaj admin'
+        else:
+            return 'Musisz sie zalogowac jako admin'
+    return 'Musisz sie zalogowac jako admin'
+
+@app.route(f"/userpage/<login>")
+def info(login):
+    return 'Nick:' + session['nick']
+
 @app.route('/rejestracja', methods = ['GET', 'POST'])
 def rejestracja():
 
@@ -47,6 +60,8 @@ def rejestracja():
             users = (Users.query.filter_by(login = login, nick = nick)).all()
             nick = str(user).split(',')[1]
             login = (str(user).split(',')[0])[0:]
+            session['login'] = login
+            session['nick'] = nick
             if not nick and not login:
                 return "<p>Niestety ale taki użytkownik już istnieje</p><a href=''/rejestracja'><button>Powrót</button></a>"
             else:
@@ -61,18 +76,20 @@ def rejestracja():
 def login():
 
     form = LoginForm()
-
+    session['adminloggedin'] = False
     if form.validate_on_submit():
         login = form.login.data
         password = form.password.data
         if login != '' and password != '':
             if not (Users.query.filter_by(login = login, password = password)).all():
                 #Nie ma takiego użytkownika
-                flash('Błąd logowania')
+                flash('Niepoprawny login lub haslo')
             else:
-                #Jest taki użytkownik
-                user = (Users.query.filter_by(login = login, password = password)).all()
-                session['nick'] = str(user).split(',')[1]
+                if login == 'Admin' and password == '1234':
+                    session['adminloggedin'] = True
+                else:
+                    user = (Users.query.filter_by(login = login, password = password)).all()
+                    session['nick'] = str(user).split(',')[1]
                 return redirect(url_for('game'))
 
     return render_template('logowanie.html', form = form, user = None)
@@ -89,7 +106,7 @@ def game():
         return redirect(url_for('game'))
     elif loginform.validate_on_submit():
         return redirect(url_for('login'))
-    return render_template('game-page.html', user = session['nick'], form = logoutform, loginform = loginform)
+    return render_template('game-page.html', user = session['nick'], form = logoutform, loginform = loginform, login = session['nick'])
 
 
 @app.route('/', methods = ["POST", "GET"])
