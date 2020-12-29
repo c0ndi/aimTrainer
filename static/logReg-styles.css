@@ -113,6 +113,16 @@ form * {
     border-radius: 15px;
     width: 250px;
 }
+.invalid-input-login{ 
+    border: 2px solid #ff405c;
+    border-radius: 15px;
+    width: 320px;
+}
+.invalid-input-login:focus{ 
+    border: 2px solid #ff405c;
+    border-radius: 15px;
+    width: 250px;
+}
 
 @media only screen and (max-width: 500px) {
     .desc-photo {

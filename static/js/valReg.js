@@ -4,6 +4,7 @@ const formNick = document.querySelector('.nick');
 
 const validateForm = (event) => {
     if (formLogin.value == '' || formPassword.value == '' || formNick.value == '') {
+        
         event.preventDefault();
         if (formLogin.value == '')
             formLogin.classList.add('invalid-input')
