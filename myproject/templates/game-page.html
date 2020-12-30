@@ -13,8 +13,8 @@
             <a href="{{url_for('index')}}"><span class="title">aimTrainer</span></a>
             <div class="">
               {% if user != None and user != ''%}
-                Zalogowano jako {{user}}
-                Twój największy wynik: {{maxscore}}
+                Zalogowano jako {{user}}<br/>
+                Twój najwiekszy wynik: {{maxscore}}
                 <form method = "POST" >
                   {{ form.hidden_tag()}}
                   {{ form.submit() }}
@@ -28,7 +28,7 @@
 
         </nav>
         <div class="result-container">
-            <span class="result-span">Zdobyłes! <span class="result"></span></span>
+            <span class="result-span">Zdobyłes! <span class="result" name = "score"></span></span>
         </div>
         <div class="board">
             <ul class="ul-easy option-list">

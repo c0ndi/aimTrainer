@@ -57,12 +57,14 @@ def login():
 @app.route('/game', methods = ["POST", "GET"])
 def game():
     logoutform = LogoutForm()
-    if len(session.keys()) < 2:
+    if 'nick' not in session:
         return render_template('game-page.html', user = None, form = logoutform)
     if logoutform.validate_on_submit():
         session['nick'] = ''
         session['adminloggedin'] = False
+        print(session.get('score'))
         return redirect(url_for('game'))
+
     return render_template('game-page.html', user = session['nick'], form = logoutform, login = session['nick'])
 
 
