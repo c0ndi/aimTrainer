@@ -17,13 +17,10 @@
     </div>
     <form method="POST">
       {{ form.hidden_tag() }}
-      <!-- jest tutaj przy kazdym inpucie .label ale on nie bedzie potrzebny i musisz dodac placeholder jak cos -->
-      <!-- jest tutaj przy kazdym inpucie .label ale on nie bedzie potrzebny i musisz dodac placeholder jak cos -->
-      <!-- jest tutaj przy kazdym inpucie .label ale on nie bedzie potrzebny i musisz dodac placeholder jak cos -->
       {{ form.login(class="log-form login form-member", placeholder="Login")}}
       {{ form.nick(class="log-form nick form-member", placeholder="Nick")}}
       {{ form.password(class="log-form password form-member", placeholder="Password")}}
-      {{ form.submit() }}
+      {{ form.submit(class="log-form btn-start") }}
     </form>
   </div>
   <script src="static/js/valReg.js"></script>
