@@ -10,6 +10,3 @@ class LoginForm(FlaskForm):
 
 class LogoutForm(FlaskForm):
     submit = SubmitField('Wyloguj')
-
-class GoToLoginForm(FlaskForm):
-    submit = SubmitField('Logowanie')

@@ -1,15 +1,10 @@
-from myproject.__init__ import app
 import os
 from flask import Flask, render_template, redirect, url_for, session, flash
-from myproject.forms import LoginForm, LogoutForm, GoToLoginForm
 from flask_sqlalchemy import SQLAlchemy
+from myproject.forms import LoginForm, LogoutForm
 from myproject.__init__ import app, db
-from usersdatabase import Users
+from myproject.usersdatabase import Users
 
-
-@app.route(f"/userpage/<login>")
-def info(login):
-    return 'Nick:' + session['nick']
 
 @app.route('/rejestracja', methods = ['GET', 'POST'])
 def rejestracja():
@@ -25,11 +20,11 @@ def rejestracja():
             users = (Users.query.filter_by(login = login, nick = nick)).all()
             nick = str(user).split(',')[1]
             login = (str(user).split(',')[0])[0:]
-            session['login'] = login
-            session['nick'] = nick
             if not nick and not login:
-                return "<p>Niestety ale taki użytkownik już istnieje</p><a href=''/rejestracja'><button>Powrót</button></a>"
+                return "<p>Niestety ale taki użytkownik już istnieje</p><a href='/rejestracja'><button>Powrót</button></a>"
             else:
+                session['login'] = login
+                session['nick'] = nick
                 db.session.add(user)
                 db.session.commit()
                 return redirect(url_for('login'))
@@ -63,32 +58,22 @@ def login():
 @app.route('/game', methods = ["POST", "GET"])
 def game():
     logoutform = LogoutForm()
-    loginform = GoToLoginForm()
     if len(session.keys()) < 2:
-        return render_template('game-page.html', user = None, form = logoutform, loginform = loginform)
+        return render_template('game-page.html', user = None, form = logoutform)
     if logoutform.validate_on_submit():
         session['nick'] = ''
         session['adminloggedin'] = False
         return redirect(url_for('game'))
-    elif loginform.validate_on_submit():
-        return redirect(url_for('login'))
-    return render_template('game-page.html', user = session['nick'], form = logoutform, loginform = loginform, login = session['nick'])
+    return render_template('game-page.html', user = session['nick'], form = logoutform, login = session['nick'])
 
 
 @app.route('/', methods = ["POST", "GET"])
 def index():
-    logoutform = LogoutForm()
-    loginform = GoToLoginForm()
     if len(session.keys()) < 2:
         return render_template('main-page.html', user = None)
-    if loginform.validate_on_submit():
-        return redirect(url_for('login'))
-    return render_template('main-page.html', user = session['nick'], form = logoutform, loginform = loginform)
+    return render_template('main-page.html', user = session['nick'])
 
 @app.errorhandler(404)
-
-# inbuilt function which takes error as parameter
 def not_found(e):
 
-# defining function
   return render_template("404.html")
