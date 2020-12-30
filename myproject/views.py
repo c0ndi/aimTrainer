@@ -20,8 +20,10 @@ def rejestracja():
             users = (Users.query.filter_by(login = login, nick = nick)).all()
             nick = str(user).split(',')[1]
             login = (str(user).split(',')[0])[0:]
-            if not nick and not login:
+
+            if user.exist():
                 return "<p>Niestety ale taki użytkownik już istnieje</p><a href='/rejestracja'><button>Powrót</button></a>"
+
             else:
                 session['login'] = login
                 session['nick'] = nick
@@ -41,16 +43,13 @@ def login():
         login = form.login.data
         password = form.password.data
         if login != '' and password != '':
-            if not (Users.query.filter_by(login = login, password = password)).all():
+            users = (Users.query.filter_by(login = login, password = password)).all()
+            if not users:
                 #Nie ma takiego użytkownika
                 flash('Niepoprawny login lub haslo')
             else:
-                if login == 'Admin' and password == '1234':
-                    session['adminloggedin'] = True
-                else:
-                    user = (Users.query.filter_by(login = login, password = password)).all()
-                    session['nick'] = str(user).split(',')[1]
-                return redirect(url_for('game'))
+                session['nick'] = str(users).split(',')[1]
+            return redirect(url_for('game'))
 
     return render_template('logowanie.html', form = form, user = None)
 
