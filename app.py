@@ -33,14 +33,6 @@ class Users(db.Model):
 
 db.create_all()
 
-@app.route('/adminpanel')
-def admin():
-    if 'login' in session:
-        if session['login'] == 'Admin':
-            return 'Witaj admin'
-        else:
-            return 'Musisz sie zalogowac jako admin'
-    return 'Musisz sie zalogowac jako admin'
 
 @app.route(f"/userpage/<login>")
 def info(login):
@@ -103,6 +95,7 @@ def game():
         return render_template('game-page.html', user = None, form = logoutform, loginform = loginform)
     if logoutform.validate_on_submit():
         session['nick'] = ''
+        session['adminloggedin'] = False
         return redirect(url_for('game'))
     elif loginform.validate_on_submit():
         return redirect(url_for('login'))
