@@ -1,0 +1,5 @@
+# Bazy danych
+*.sqlite
+
+#Pycache
+__pycache__

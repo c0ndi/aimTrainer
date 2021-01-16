@@ -22,6 +22,11 @@
       {{ form.password(class="log-form password form-member", placeholder="Password")}}
       {{ form.submit(class="log-form btn-start") }}
     </form>
+    {% for flash in get_flashed_messages() %}
+        <p>{{ flash }}</p>
+        <a href = "/logowanie"><button type="button" name="button">Przejdz do logowania</button></a>
+    {% endfor %}
+
   </div>
   <script src="static/js/valReg.js"></script>
 </body>

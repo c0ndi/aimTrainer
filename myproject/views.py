@@ -6,6 +6,7 @@ from myproject.__init__ import app, db
 from myproject.usersdatabase import Users
 
 
+
 @app.route('/rejestracja', methods = ['GET', 'POST'])
 def rejestracja():
 
@@ -22,7 +23,7 @@ def rejestracja():
             login = (str(user).split(',')[0])[0:]
 
             if user.exist():
-                return "<p>Niestety ale taki użytkownik już istnieje</p><a href='/rejestracja'><button>Powrót</button></a>"
+                flash('Niestety ale taki użytkownik istnieje')
 
             else:
                 session['login'] = login
@@ -38,7 +39,6 @@ def rejestracja():
 def login():
 
     form = LoginForm()
-    session['adminloggedin'] = False
     if form.validate_on_submit():
         login = form.login.data
         password = form.password.data
@@ -49,7 +49,7 @@ def login():
                 flash('Niepoprawny login lub haslo')
             else:
                 session['nick'] = str(users).split(',')[1]
-            return redirect(url_for('game'))
+                return redirect(url_for('game'))
 
     return render_template('logowanie.html', form = form, user = None)
 
