@@ -1,11 +1,11 @@
-aimTrainer/__pycache__
+__pycache__
 
-aimTrainer/.idea
+.idea
 
-aimTrainer/.git
+.git
 
-aimTrainer/.gitignore
+.gitignore
 
-aimTrainer/myproject/__pycache__
+myproject/__pycache__
 
-aimTrainer/myproject/data.sqlite
+myproject/data.sqlite
