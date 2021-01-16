@@ -1,6 +1,0 @@
-__pycache__
-.idea
-.git
-.gitignore
-myproject/__pycache__
-myproject/data.sqlite
