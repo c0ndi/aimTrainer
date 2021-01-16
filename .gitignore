@@ -1,5 +1,11 @@
-# Bazy danych
-*.sqlite
+aimTrainer/__pycache__
 
-#Pycache
-__pycache__
+aimTrainer/.idea
+
+aimTrainer/.git
+
+aimTrainer/.gitignore
+
+aimTrainer/myproject/__pycache__
+
+aimTrainer/myproject/data.sqlite
